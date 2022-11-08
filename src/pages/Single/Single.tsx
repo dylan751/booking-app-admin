@@ -1,5 +1,5 @@
 import React from 'react';
-import './Single.scss';
+import './Single.module.scss';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Navbar from '../../components/Navbar/Navbar';
 import Chart from '../../components/Chart/Chart';

@@ -1,5 +1,5 @@
 import React from 'react';
-import './Home.scss';
+import './Home.module.scss';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Navbar from '../../components/Navbar/Navbar';
 import Widget from '../../components/Widget/Widget';

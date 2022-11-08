@@ -1,5 +1,5 @@
 import React from 'react';
-import './Widget.scss';
+import './Widget.module.scss';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 import AccountBalanceWalletOutlinedIcon from '@mui/icons-material/AccountBalanceWalletOutlined';

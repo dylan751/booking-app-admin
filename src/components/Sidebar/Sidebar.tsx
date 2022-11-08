@@ -1,5 +1,5 @@
 import React from 'react';
-import './Sidebar.scss';
+import './Sidebar.module.scss';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
