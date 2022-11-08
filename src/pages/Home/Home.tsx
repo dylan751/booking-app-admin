@@ -1,5 +1,5 @@
 import React from 'react';
-import './Home.module.scss';
+import styles from './Home.module.scss';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Navbar from '../../components/Navbar/Navbar';
 import Widget from '../../components/Widget/Widget';
@@ -9,22 +9,22 @@ import Table from '../../components/Table/Table';
 
 const Home = () => {
   return (
-    <div className="home">
+    <div className={styles['home']}>
       <Sidebar />
-      <div className="homeContainer">
+      <div className={styles['homeContainer']}>
         <Navbar />
-        <div className="widgets">
+        <div className={styles['widgets']}>
           <Widget type="user" />
           <Widget type="order" />
           <Widget type="earning" />
           <Widget type="balance" />
         </div>
-        <div className="charts">
+        <div className={styles['charts']}>
           <Featured />
           <Chart title="Last 6 Months (Revenue)" aspect={2 / 1} />
         </div>
-        <div className="listContainer">
-          <div className="listTitle">Latest Transactions</div>
+        <div className={styles['listContainer']}>
+          <div className={styles['listTitle']}>Latest Transactions</div>
           <Table />
         </div>
       </div>

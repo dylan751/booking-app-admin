@@ -1,5 +1,5 @@
 import React from 'react';
-import './Datatable.module.scss';
+import styles from './Datatable.module.scss';
 import { DataGrid } from '@mui/x-data-grid';
 import { userColumns, userRows } from '../../datatablesource';
 import { Link } from 'react-router-dom';
@@ -19,12 +19,12 @@ const Datatable = () => {
       width: 200,
       renderCell: (params) => {
         return (
-          <div className="cellAction">
+          <div className={styles['cellAction']}>
             <Link to="/users/test" style={{ textDecoration: 'none' }}>
               <div className="viewButton">View</div>
             </Link>
             <div
-              className="deleteButton"
+              className={styles['deleteButton']}
               onClick={() => handleDelete(params.row.id)}
             >
               Delete
@@ -35,15 +35,15 @@ const Datatable = () => {
     },
   ];
   return (
-    <div className="datatable">
-      <div className="datatableTitle">
+    <div className={styles['datatable']}>
+      <div className={styles['datatableTitle']}>
         Add New User
-        <Link to="/users/new" className="link">
+        <Link to="/users/new" className={styles['link']}>
           Add New
         </Link>
       </div>
       <DataGrid
-        className="datagrid"
+        className={styles['datagrid']}
         rows={data}
         columns={userColumns.concat(actionColumn)}
         pageSize={9}

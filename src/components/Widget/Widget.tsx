@@ -1,5 +1,5 @@
 import React from 'react';
-import './Widget.module.scss';
+import styles from './Widget.module.scss';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 import AccountBalanceWalletOutlinedIcon from '@mui/icons-material/AccountBalanceWalletOutlined';
@@ -25,7 +25,7 @@ const Widget = ({ type }: WidgetProps) => {
         link: 'See all users',
         icon: (
           <PersonOutlinedIcon
-            className="icon"
+            className={styles['icon']}
             style={{
               color: 'crimson',
               backgroundColor: 'rgba(255, 0, 0, 0.2)',
@@ -41,7 +41,7 @@ const Widget = ({ type }: WidgetProps) => {
         link: 'View all orders',
         icon: (
           <ShoppingCartOutlinedIcon
-            className="icon"
+            className={styles['icon']}
             style={{
               backgroundColor: 'rgba(218, 165, 32, 0.2)',
               color: 'goldenrod',
@@ -57,7 +57,7 @@ const Widget = ({ type }: WidgetProps) => {
         link: 'View net earnings',
         icon: (
           <MonetizationOnOutlinedIcon
-            className="icon"
+            className={styles['icon']}
             style={{ backgroundColor: 'rgba(0, 128, 0, 0.2)', color: 'green' }}
           />
         ),
@@ -70,7 +70,7 @@ const Widget = ({ type }: WidgetProps) => {
         link: 'See details',
         icon: (
           <AccountBalanceWalletOutlinedIcon
-            className="icon"
+            className={styles['icon']}
             style={{
               backgroundColor: 'rgba(128, 0, 128, 0.2)',
               color: 'purple',
@@ -84,16 +84,16 @@ const Widget = ({ type }: WidgetProps) => {
   }
 
   return (
-    <div className="widget">
-      <div className="left">
-        <span className="title">{data.title}</span>
-        <span className="counter">
+    <div className={styles['widget']}>
+      <div className={styles['left']}>
+        <span className={styles['title']}>{data.title}</span>
+        <span className={styles['counter']}>
           {data.isMoney && '$'} {amount}
         </span>
-        <span className="link">{data.link}</span>
+        <span className={styles['link']}>{data.link}</span>
       </div>
-      <div className="right">
-        <div className="percentage positive">
+      <div className={styles['right']}>
+      <div className={`${styles['percentage']} ${styles['positive']}`}>
           <KeyboardArrowUpIcon />
           {diff} %
         </div>

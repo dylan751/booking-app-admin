@@ -1,3 +1,32 @@
-.login{
-    
+.login {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &__input {
+      height: 30px;
+      padding: 10px;
+    }
+
+    &__login-btn {
+      border: none;
+      padding: 10px 20px;
+      background-color: #0071c2;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 5px;
+
+      &:disabled {
+        background-color: #0071c28c;
+        cursor: not-allowed;
+      }
+    }
+  }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import './Sidebar.module.scss';
+import styles from './Sidebar.module.scss';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
@@ -19,81 +19,81 @@ import { useContext } from 'react';
 const Sidebar = () => {
   const { dispatch } = useContext(DarkModeContext);
   return (
-    <div className="sidebar">
-      <div className="top">
+    <div className={styles['sidebar']}>
+      <div className={styles['top']}>
         <Link to="/" style={{ textDecoration: 'none' }}>
-          <span className="logo">zuongadmin</span>
+          <span className={styles['logo']}>zuongadmin</span>
         </Link>
       </div>
       <hr />
-      <div className="center">
+      <div className={styles['center']}>
         <ul>
-          <p className="title">MAIN</p>
+          <p className={styles['title']}>MAIN</p>
           <li>
-            <DashboardIcon className="icon" />
+            <DashboardIcon className={styles['icon']} />
             <span>Dashboard</span>
           </li>
-          <p className="title">LISTS</p>
+          <p className={styles['title']}>LISTS</p>
           <Link to="/users" style={{ textDecoration: 'none' }}>
             <li>
-              <PersonOutlineIcon className="icon" />
+              <PersonOutlineIcon className={styles['icon']} />
               <span>Users</span>
             </li>
           </Link>
           <Link to="/products" style={{ textDecoration: 'none' }}>
             <li>
-              <StoreIcon className="icon" />
+              <StoreIcon className={styles['icon']} />
               <span>Products</span>
             </li>
           </Link>
           <li>
-            <CreditCardIcon className="icon" />
+            <CreditCardIcon className={styles['icon']} />
             <span>Orders</span>
           </li>
           <li>
-            <LocalShippingIcon className="icon" />
+            <LocalShippingIcon className={styles['icon']} />
             <span>Delivery</span>
           </li>
-          <p className="title">USEFUL</p>
+          <p className={styles['title']}>USEFUL</p>
           <li>
-            <InsertChartIcon className="icon" />
+            <InsertChartIcon className={styles['icon']} />
             <span>Stats</span>
           </li>
           <li>
-            <NotificationsNoneIcon className="icon" />
+            <NotificationsNoneIcon className={styles['icon']} />
             <span>Notifications</span>
           </li>
-          <p className="title">SERVICE</p>
+          <p className={styles['title']}>SERVICE</p>
           <li>
-            <SettingsSystemDaydreamOutlinedIcon className="icon" />
+            <SettingsSystemDaydreamOutlinedIcon className={styles['icon']} />
             <span>System Health</span>
           </li>
           <li>
-            <PsychologyOutlinedIcon className="icon" />
+            <PsychologyOutlinedIcon className={styles['icon']} />
             <span>Logs</span>
           </li>
           <li>
-            <SettingsApplicationsIcon className="icon" />
+            <SettingsApplicationsIcon className={styles['icon']} />
             <span>Settings</span>
           </li>
-          <p className="title">USER</p>
+          <p className={styles['title']}>USER</p>
           <li>
-            <AccountCircleOutlinedIcon className="icon" />
+            <AccountCircleOutlinedIcon className={styles['icon']} />
             <span>Profile</span>
           </li>
           <li>
-            <ExitToAppIcon className="icon" />
+            <ExitToAppIcon className={styles['icon']} />
             <span>Logout</span>
           </li>
         </ul>
       </div>
-      <div className="bottom">
+      <div className={styles['bottom']}>
         <div
-          className="colorOption"
+          className={styles['colorOption']}
           onClick={() => dispatch && dispatch({ type: 'LIGHT' })}
         ></div>
         <div
-          className="colorOption"
+          className={styles['colorOption']}
           onClick={() => dispatch && dispatch({ type: 'DARK' })}
         ></div>
       </div>

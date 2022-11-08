@@ -1,5 +1,5 @@
 import React from 'react';
-import './New.module.scss';
+import styles from './New.module.scss';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Navbar from '../../components/Navbar/Navbar';
 import DriveFolderUploadOutlinedIcon from '@mui/icons-material/DriveFolderUploadOutlined';
@@ -15,15 +15,15 @@ const New = ({ inputs, title }: NewProps) => {
   const [file, setFile] = useState('');
 
   return (
-    <div className="new">
+    <div className={styles['new']}>
       <Sidebar />
-      <div className="newContainer">
+      <div className={styles['newContainer']}>
         <Navbar />
-        <div className="top">
+        <div className={styles['top']}>
           <h1>{title}</h1>
         </div>
-        <div className="bottom">
-          <div className="left">
+        <div className={styles['bottom']}>
+          <div className={styles['left']}>
             <img
               src={
                 file
@@ -33,9 +33,9 @@ const New = ({ inputs, title }: NewProps) => {
               alt=""
             />
           </div>
-          <div className="right">
+          <div className={styles['right']}>
             <form>
-              <div className="formInput">
+              <div className={styles['formInput']}>
                 <label htmlFor="file">
                   Image: <DriveFolderUploadOutlinedIcon className="icon" />
                 </label>
@@ -48,7 +48,7 @@ const New = ({ inputs, title }: NewProps) => {
               </div>
 
               {inputs.map((input) => (
-                <div className="formInput" key={input.id}>
+                <div className={styles['formInput']} key={input.id}>
                   <label>{input.label}</label>
                   <input type={input.type} placeholder={input.placeholder} />
                 </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import './Chart.module.scss';
+import styles from './Chart.module.scss';
 import {
   AreaChart,
   Area,
@@ -25,8 +25,8 @@ interface ChartProps {
 
 const Chart = ({ aspect, title }: ChartProps) => {
   return (
-    <div className="chart">
-      <div className="title">{title}</div>
+    <div className={styles['chart']}>
+      <div className={styles['title']}>{title}</div>
       <ResponsiveContainer width="100%" aspect={aspect}>
         <AreaChart
           width={730}
@@ -41,7 +41,10 @@ const Chart = ({ aspect, title }: ChartProps) => {
             </linearGradient>
           </defs>
           <XAxis dataKey="name" stroke="gray" />
-          <CartesianGrid strokeDasharray="3 3" className="chartGrid" />
+          <CartesianGrid
+            strokeDasharray="3 3"
+            className={styles['chartGrid']}
+          />
           <Tooltip />
           <Area
             type="monotone"

@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './components/Datatable/Datatable.module.scss';
 import { UserRows } from './models/UserRows';
 
 export const userColumns = [
@@ -9,8 +10,12 @@ export const userColumns = [
     width: 230,
     renderCell: (params) => {
       return (
-        <div className="cellWithImg">
-          <img className="cellImg" src={params.row.img} alt="avatar" />
+        <div className={styles['cellWithImg']}>
+          <img
+            className={styles['cellImg']}
+            src={params.row.img}
+            alt="avatar"
+          />
           {params.row.username}
         </div>
       );
@@ -33,7 +38,9 @@ export const userColumns = [
     width: 160,
     renderCell: (params) => {
       return (
-        <div className={`cellWithStatus ${params.row.status}`}>
+        <div
+          className={`${styles['cellWithStatus']} ${styles[params.row.status]}`}
+        >
           {params.row.status}
         </div>
       );

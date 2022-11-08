@@ -1,14 +1,14 @@
 import React from 'react';
-import './List.module.scss';
+import styles from './List.module.scss';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Navbar from '../../components/Navbar/Navbar';
 import Datatable from '../../components/Datatable/Datatable';
 
 const List = () => {
   return (
-    <div className="list">
+    <div className={styles['list']}>
       <Sidebar />
-      <div className="listContainer">
+      <div className={styles['listContainer']}>
         <Navbar />
         <Datatable />
       </div>
