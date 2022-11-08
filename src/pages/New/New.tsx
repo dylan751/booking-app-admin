@@ -1,11 +1,18 @@
-import "./new.scss";
-import Sidebar from "../../components/sidebar/Sidebar";
-import Navbar from "../../components/navbar/Navbar";
-import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
-import { useState } from "react";
+import React from 'react';
+import './New.scss';
+import Sidebar from '../../components/Sidebar/Sidebar';
+import Navbar from '../../components/Navbar/Navbar';
+import DriveFolderUploadOutlinedIcon from '@mui/icons-material/DriveFolderUploadOutlined';
+import { useState } from 'react';
+import { UserInputs } from '../../models/UserInputs';
 
-const New = ({ inputs, title }) => {
-  const [file, setFile] = useState("");
+interface NewProps {
+  inputs: UserInputs[];
+  title: string;
+}
+
+const New = ({ inputs, title }: NewProps) => {
+  const [file, setFile] = useState('');
 
   return (
     <div className="new">
@@ -20,8 +27,8 @@ const New = ({ inputs, title }) => {
             <img
               src={
                 file
-                  ? URL.createObjectURL(file)
-                  : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                  ? URL.createObjectURL(file as any)
+                  : 'https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg'
               }
               alt=""
             />
@@ -35,8 +42,8 @@ const New = ({ inputs, title }) => {
                 <input
                   type="file"
                   id="file"
-                  onChange={(e) => setFile(e.target.files[0])}
-                  style={{ display: "none" }}
+                  onChange={(e: any) => setFile(e.target.files[0])}
+                  style={{ display: 'none' }}
                 />
               </div>
 
