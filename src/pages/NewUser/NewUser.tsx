@@ -20,7 +20,7 @@ const NewUser = ({ inputs, title }: NewProps) => {
     setUserInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
-  const handleClick = async (e) => {
+  const handleSend = async (e) => {
     e.preventDefault();
 
     // Upload images to Cloudinary
@@ -94,7 +94,7 @@ const NewUser = ({ inputs, title }: NewProps) => {
                   />
                 </div>
               ))}
-              <button onClick={handleClick}>Send</button>
+              <button onClick={handleSend}>Send</button>
             </form>
           </div>
         </div>

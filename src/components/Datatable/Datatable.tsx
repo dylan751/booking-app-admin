@@ -30,7 +30,7 @@ const Datatable = ({ columns }: DatatableProps) => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`${process.env.REACT_APP_API_ENDPOINT}/${path}/${id}`);
-    setList((list as any).filter((item) => item._id !== id));
+      setList((list as any).filter((item) => item._id !== id));
     } catch (err) {
       console.log(err);
     }
@@ -44,7 +44,7 @@ const Datatable = ({ columns }: DatatableProps) => {
       renderCell: (params) => {
         return (
           <div className={styles['cellAction']}>
-            <Link to="/users/test" style={{ textDecoration: 'none' }}>
+            <Link to={`/${path}/test`} style={{ textDecoration: 'none' }}>
               <div className="viewButton">View</div>
             </Link>
             <div
@@ -66,7 +66,7 @@ const Datatable = ({ columns }: DatatableProps) => {
         <>
           <div className={styles['datatableTitle']}>
             Add New User
-            <Link to="/users/new" className={styles['link']}>
+            <Link to={`/${path}/new`} className={styles['link']}>
               Add New
             </Link>
           </div>

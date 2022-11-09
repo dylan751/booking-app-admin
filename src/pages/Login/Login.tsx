@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
-import { axiosInstance } from '../../hooks/AxiosInstance';
 import styles from './Login.module.scss';
 
 const Login = () => {

@@ -6,12 +6,12 @@ import DriveFolderUploadOutlinedIcon from '@mui/icons-material/DriveFolderUpload
 import { useState } from 'react';
 import { UserInputs } from '../../models/UserInputs';
 
-interface NewProps {
+interface NewRoomProps {
   inputs: any[];
   title: string;
 }
 
-const NewRoom = ({ inputs, title }: NewProps) => {
+const NewRoom = ({ inputs, title }: NewRoomProps) => {
   const [file, setFile] = useState('');
 
   return (
