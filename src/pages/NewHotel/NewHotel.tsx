@@ -31,8 +31,6 @@ const NewHotel = () => {
     setRooms(value);
   };
 
-  console.log(files);
-
   const handleSend = async (e) => {
     e.preventDefault();
     try {

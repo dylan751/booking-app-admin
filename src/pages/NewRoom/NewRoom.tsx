@@ -5,14 +5,39 @@ import Navbar from '../../components/Navbar/Navbar';
 import DriveFolderUploadOutlinedIcon from '@mui/icons-material/DriveFolderUploadOutlined';
 import { useState } from 'react';
 import { UserInputs } from '../../models/UserInputs';
+import { roomInputs } from '../../formSource';
+import useFetch from '../../hooks/useFetch';
+import { Hotel } from '../../models/Hotel';
+import axios from 'axios';
 
-interface NewRoomProps {
-  inputs: any[];
-  title: string;
-}
+const NewRoom = () => {
+  const [roomInfo, setRoomInfo] = useState({});
+  const [hotelId, setHotelId] = useState<string>('');
+  const [rooms, setRooms] = useState<any>([]);
 
-const NewRoom = ({ inputs, title }: NewRoomProps) => {
-  const [file, setFile] = useState('');
+  const { data, loading, error } = useFetch<Hotel[]>(
+    `${process.env.REACT_APP_API_ENDPOINT}/hotels`,
+  );
+
+  const handleChange = (e) => {
+    setRoomInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  };
+
+  const handleSend = async (e) => {
+    e.preventDefault();
+    const roomNumbers = rooms.split(',').map((roomId) => ({
+      number: roomId.trim(),
+    }));
+
+    try {
+      await axios.post(
+        `${process.env.REACT_APP_API_ENDPOINT}/rooms/${hotelId}`,
+        { ...roomInfo, roomNumbers },
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className={styles['new']}>
@@ -20,40 +45,46 @@ const NewRoom = ({ inputs, title }: NewRoomProps) => {
       <div className={styles['newContainer']}>
         <Navbar />
         <div className={styles['top']}>
-          <h1>{title}</h1>
+          <h1>Add New Room</h1>
         </div>
         <div className={styles['bottom']}>
-          <div className={styles['left']}>
-            <img
-              src={
-                file
-                  ? URL.createObjectURL(file as any)
-                  : 'https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg'
-              }
-              alt=""
-            />
-          </div>
           <div className={styles['right']}>
             <form>
-              <div className={styles['formInput']}>
-                <label htmlFor="file">
-                  Image: <DriveFolderUploadOutlinedIcon className="icon" />
-                </label>
-                <input
-                  type="file"
-                  id="file"
-                  onChange={(e: any) => setFile(e.target.files[0])}
-                  style={{ display: 'none' }}
-                />
-              </div>
-
-              {inputs.map((input) => (
+              {roomInputs.map((input) => (
                 <div className={styles['formInput']} key={input.id}>
                   <label>{input.label}</label>
-                  <input type={input.type} placeholder={input.placeholder} />
+                  <input
+                    id={input.id}
+                    type={input.type}
+                    placeholder={input.placeholder}
+                    onChange={handleChange}
+                  />
                 </div>
               ))}
-              <button>Send</button>
+              <div className={styles['formInput']}>
+                <label>Rooms</label>
+                <textarea
+                  onChange={(e) => setRooms(e.target.value)}
+                  placeholder="Give comma between room numbers"
+                />
+              </div>
+              <div className={styles['formInput']}>
+                <label>Choose a hotel</label>
+                <select
+                  id="hotelId"
+                  onChange={(e) => setHotelId(e.target.value)}
+                >
+                  {loading
+                    ? 'Loading Please wait'
+                    : data &&
+                      data.map((hotel) => (
+                        <option value={hotel._id} key={hotel._id}>
+                          {hotel.name}
+                        </option>
+                      ))}
+                </select>
+              </div>
+              <button onClick={handleSend}>Send</button>
             </form>
           </div>
         </div>
