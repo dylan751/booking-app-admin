@@ -4,7 +4,6 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 import Navbar from '../../components/Navbar/Navbar';
 import DriveFolderUploadOutlinedIcon from '@mui/icons-material/DriveFolderUploadOutlined';
 import { useState } from 'react';
-import { UserInputs } from '../../models/UserInputs';
 import { hotelInputs } from '../../formSource';
 import useFetch from '../../hooks/useFetch';
 import { Room } from '../../models/Room';
@@ -15,7 +14,7 @@ const NewHotel = () => {
   const [hotelInfo, setHotelInfo] = useState({});
   const [rooms, setRooms] = useState<any[]>([]);
 
-  const { data, loading, error } = useFetch<Room[]>(
+  const { data, loading } = useFetch<Room[]>(
     `${process.env.REACT_APP_API_ENDPOINT}/rooms`,
   );
 

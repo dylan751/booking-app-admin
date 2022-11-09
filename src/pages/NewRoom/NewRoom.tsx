@@ -2,9 +2,7 @@ import React from 'react';
 import styles from './NewRoom.module.scss';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Navbar from '../../components/Navbar/Navbar';
-import DriveFolderUploadOutlinedIcon from '@mui/icons-material/DriveFolderUploadOutlined';
 import { useState } from 'react';
-import { UserInputs } from '../../models/UserInputs';
 import { roomInputs } from '../../formSource';
 import useFetch from '../../hooks/useFetch';
 import { Hotel } from '../../models/Hotel';
@@ -15,7 +13,7 @@ const NewRoom = () => {
   const [hotelId, setHotelId] = useState<string>('');
   const [rooms, setRooms] = useState<any>([]);
 
-  const { data, loading, error } = useFetch<Hotel[]>(
+  const { data, loading } = useFetch<Hotel[]>(
     `${process.env.REACT_APP_API_ENDPOINT}/hotels`,
   );
 
