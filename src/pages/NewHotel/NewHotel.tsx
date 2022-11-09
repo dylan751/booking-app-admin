@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './New.module.scss';
+import styles from './NewHotel.module.scss';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Navbar from '../../components/Navbar/Navbar';
 import DriveFolderUploadOutlinedIcon from '@mui/icons-material/DriveFolderUploadOutlined';
@@ -7,11 +7,11 @@ import { useState } from 'react';
 import { UserInputs } from '../../models/UserInputs';
 
 interface NewProps {
-  inputs: UserInputs[];
+  inputs: any[];
   title: string;
 }
 
-const New = ({ inputs, title }: NewProps) => {
+const NewHotel = ({ inputs, title }: NewProps) => {
   const [file, setFile] = useState('');
 
   return (
@@ -62,4 +62,4 @@ const New = ({ inputs, title }: NewProps) => {
   );
 };
 
-export default New;
+export default NewHotel;

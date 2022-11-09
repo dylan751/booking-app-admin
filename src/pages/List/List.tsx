@@ -4,13 +4,17 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 import Navbar from '../../components/Navbar/Navbar';
 import Datatable from '../../components/Datatable/Datatable';
 
-const List = () => {
+interface ListProps {
+  columns: any;
+}
+
+const List = ({ columns }: ListProps) => {
   return (
     <div className={styles['list']}>
       <Sidebar />
       <div className={styles['listContainer']}>
         <Navbar />
-        <Datatable />
+        <Datatable columns={columns} />
       </div>
     </div>
   );

@@ -1,6 +1,9 @@
 export interface UserInputs {
   id: number;
-  label: string;
-  type: string;
-  placeholder?: string;
+  username: string;
+  email: string;
+  phone: string;
+  password: string;
+  country: string;
+  city: string;
 }

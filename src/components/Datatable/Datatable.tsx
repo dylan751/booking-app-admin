@@ -1,15 +1,39 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './Datatable.module.scss';
 import { DataGrid } from '@mui/x-data-grid';
-import { userColumns, userRows } from '../../datatablesource';
-import { Link } from 'react-router-dom';
+import { userColumns } from '../../datatablesource';
+import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
+import useFetch from '../../hooks/useFetch';
+import { User } from '../../models/User';
+import axios from 'axios';
+import { Hotel } from '../../models/Hotel';
+import { Room } from '../../models/Room';
 
-const Datatable = () => {
-  const [data, setData] = useState(userRows);
+interface DatatableProps {
+  columns: any;
+}
 
-  const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+const Datatable = ({ columns }: DatatableProps) => {
+  const location = useLocation();
+  const path = location.pathname.split('/')[1];
+
+  const [list, setList] = useState<User[] | Hotel[] | Room[]>([]);
+  const { data, loading, error } = useFetch<User[] | Hotel[] | Room[]>(
+    `${process.env.REACT_APP_API_ENDPOINT}/${path}`,
+  );
+
+  useEffect(() => {
+    if (data) setList(data);
+  }, [data]);
+
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`${process.env.REACT_APP_API_ENDPOINT}/${path}/${id}`);
+    setList((list as any).filter((item) => item._id !== id));
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const actionColumn = [
@@ -25,7 +49,7 @@ const Datatable = () => {
             </Link>
             <div
               className={styles['deleteButton']}
-              onClick={() => handleDelete(params.row.id)}
+              onClick={() => handleDelete(params.row._id)}
             >
               Delete
             </div>
@@ -36,20 +60,27 @@ const Datatable = () => {
   ];
   return (
     <div className={styles['datatable']}>
-      <div className={styles['datatableTitle']}>
-        Add New User
-        <Link to="/users/new" className={styles['link']}>
-          Add New
-        </Link>
-      </div>
-      <DataGrid
-        className={styles['datagrid']}
-        rows={data}
-        columns={userColumns.concat(actionColumn)}
-        pageSize={9}
-        rowsPerPageOptions={[9]}
-        checkboxSelection
-      />
+      {loading ? (
+        'Loading Please wait'
+      ) : (
+        <>
+          <div className={styles['datatableTitle']}>
+            Add New User
+            <Link to="/users/new" className={styles['link']}>
+              Add New
+            </Link>
+          </div>
+          <DataGrid
+            className={styles['datagrid']}
+            rows={list as any}
+            columns={columns.concat(actionColumn)}
+            pageSize={9}
+            rowsPerPageOptions={[9]}
+            checkboxSelection
+            getRowId={(row) => row._id}
+          />
+        </>
+      )}
     </div>
   );
 };
