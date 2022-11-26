@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './NewRoom.module.scss';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Navbar from '../../components/Navbar/Navbar';
 import { useState } from 'react';
@@ -7,6 +6,7 @@ import { roomInputs } from '../../formSource';
 import useFetch from '../../hooks/useFetch';
 import { Hotel } from '../../models/Hotel';
 import axios from 'axios';
+import styles from './NewRoom.module.scss';
 
 const NewRoom = () => {
   const [roomInfo, setRoomInfo] = useState({});
