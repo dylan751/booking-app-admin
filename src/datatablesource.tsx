@@ -90,3 +90,47 @@ export const roomColumns = [
     width: 100,
   },
 ];
+
+export const formColumns = [
+  { field: '_id', headerName: 'ID', width: 250 },
+  {
+    field: 'firstName',
+    headerName: 'First Name',
+    width: 100,
+  },
+  {
+    field: 'lastName',
+    headerName: 'Last Name',
+    width: 100,
+  },
+  {
+    field: 'email',
+    headerName: 'Email',
+    width: 100,
+  },
+  {
+    field: 'country',
+    headerName: 'Country',
+    width: 100,
+  },
+  {
+    field: 'phoneNumber',
+    headerName: 'Phone Number',
+    width: 100,
+  },
+  {
+    field: 'price',
+    headerName: 'Price',
+    width: 100,
+  },
+  {
+    field: 'hotelId',
+    headerName: 'HotelID',
+    width: 100,
+  },
+  {
+    field: 'roomIds',
+    headerName: 'Room IDs',
+    width: 100,
+  },
+];

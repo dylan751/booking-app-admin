@@ -52,10 +52,12 @@ const Sidebar = () => {
               <span>Rooms</span>
             </li>
           </Link>
-          <li>
-            <LocalShippingIcon className={styles['icon']} />
-            <span>Delivery</span>
-          </li>
+          <Link to="/forms" style={{ textDecoration: 'none' }}>
+            <li>
+              <LocalShippingIcon className={styles['icon']} />
+              <span>Booking Forms</span>
+            </li>
+          </Link>
           <p className={styles['title']}>USEFUL</p>
           <li>
             <InsertChartIcon className={styles['icon']} />

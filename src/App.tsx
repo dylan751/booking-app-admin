@@ -10,7 +10,12 @@ import styles from './style/dark.module.scss';
 import { useContext } from 'react';
 import { DarkModeContext } from './context/DarkModeContext';
 import { AuthContext } from './context/AuthContext';
-import { hotelColumns, roomColumns, userColumns } from './datatablesource';
+import {
+  formColumns,
+  hotelColumns,
+  roomColumns,
+  userColumns,
+} from './datatablesource';
 import NewHotel from './pages/NewHotel/NewHotel';
 import NewRoom from './pages/NewRoom/NewRoom';
 
@@ -81,7 +86,7 @@ function App() {
                 }
               />
               <Route
-                path=":productId"
+                path=":hotelId"
                 element={
                   <ProtectedRoute>
                     <Single />
@@ -107,7 +112,7 @@ function App() {
                 }
               />
               <Route
-                path=":productId"
+                path=":roomId"
                 element={
                   <ProtectedRoute>
                     <Single />
@@ -119,6 +124,24 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <NewRoom />
+                  </ProtectedRoute>
+                }
+              />
+            </Route>
+            <Route path="forms">
+              <Route
+                index
+                element={
+                  <ProtectedRoute>
+                    <List columns={formColumns} />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path=":formId"
+                element={
+                  <ProtectedRoute>
+                    <Single />
                   </ProtectedRoute>
                 }
               />

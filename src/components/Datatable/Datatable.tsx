@@ -23,6 +23,8 @@ const Datatable = ({ columns }: DatatableProps) => {
     `${process.env.REACT_APP_API_ENDPOINT}/${path}`,
   );
 
+  console.log(data);
+
   useEffect(() => {
     if (data) setList(data);
   }, [data]);
@@ -66,9 +68,11 @@ const Datatable = ({ columns }: DatatableProps) => {
         <>
           <div className={styles['datatableTitle']}>
             {path}
-            <Link to={`/${path}/new`} className={styles['link']}>
-              Add New
-            </Link>
+            {path !== 'forms' && (
+              <Link to={`/${path}/new`} className={styles['link']}>
+                Add New
+              </Link>
+            )}
           </div>
           <DataGrid
             className={styles['datagrid']}
