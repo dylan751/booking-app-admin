@@ -3,22 +3,26 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 import Navbar from '../../components/Navbar/Navbar';
 import { useState } from 'react';
 import { roomInputs } from '../../formSource';
-import useFetch from '../../hooks/useFetch';
-import { Hotel } from '../../models/Hotel';
 import axios from 'axios';
 import styles from './NewRoom.module.scss';
+import { roomTypes, tagsArr } from '../../constants/roomConstants';
 
 const NewRoom = () => {
   const [roomInfo, setRoomInfo] = useState({});
-  const [hotelId, setHotelId] = useState<string>('');
   const [rooms, setRooms] = useState<any>([]);
-
-  const { data, loading } = useFetch<Hotel[]>(
-    `${process.env.REACT_APP_API_ENDPOINT}/hotels`,
-  );
+  const [roomType, setRoomType] = useState<string>('');
+  const [tags, setTags] = useState<string[]>([]);
 
   const handleChange = (e) => {
     setRoomInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  };
+
+  const handleSelectTags = (e) => {
+    const value = Array.from(
+      e.target.selectedOptions,
+      (option: any) => option.value,
+    );
+    setTags(value);
   };
 
   const handleSend = async (e) => {
@@ -28,10 +32,12 @@ const NewRoom = () => {
     }));
 
     try {
-      await axios.post(
-        `${process.env.REACT_APP_API_ENDPOINT}/rooms/${hotelId}`,
-        { ...roomInfo, roomNumbers },
-      );
+      await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/rooms`, {
+        ...roomInfo,
+        type: roomType,
+        tags,
+        roomNumbers,
+      });
     } catch (err) {
       console.log(err);
     }
@@ -67,19 +73,27 @@ const NewRoom = () => {
                 />
               </div>
               <div className={styles['formInput']}>
-                <label>Choose a hotel</label>
+                <label>Room type</label>
                 <select
-                  id="hotelId"
-                  onChange={(e) => setHotelId(e.target.value)}
+                  id="roomTypeId"
+                  onChange={(e) => setRoomType(e.target.value)}
+                  defaultValue={roomTypes[0]}
                 >
-                  {loading
-                    ? 'Loading Please wait'
-                    : data &&
-                      data.map((hotel) => (
-                        <option value={hotel._id} key={hotel._id}>
-                          {hotel.name}
-                        </option>
-                      ))}
+                  {roomTypes.map((roomType, index) => (
+                    <option value={roomType} key={index}>
+                      {roomType}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className={styles['formInput']}>
+                <label>Tags</label>
+                <select id="tagId" onChange={handleSelectTags} multiple>
+                  {tagsArr.map((tag, index) => (
+                    <option value={tag} key={index}>
+                      {tag}
+                    </option>
+                  ))}
                 </select>
               </div>
               <button onClick={handleSend}>Send</button>
