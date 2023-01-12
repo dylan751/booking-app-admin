@@ -8,11 +8,13 @@ import { hotelInputs } from '../../formSource';
 import useFetch from '../../hooks/useFetch';
 import { Room } from '../../models/Room';
 import axios from 'axios';
+import { tagsArr } from '../../constants/hotelConstants';
 
 const NewHotel = () => {
   const [files, setFiles] = useState<any>('');
   const [hotelInfo, setHotelInfo] = useState({});
   const [rooms, setRooms] = useState<any[]>([]);
+  const [tags, setTags] = useState<string[]>([]);
 
   const { data, loading } = useFetch<Room[]>(
     `${process.env.REACT_APP_API_ENDPOINT}/rooms`,
@@ -28,6 +30,14 @@ const NewHotel = () => {
       (option: any) => option.value,
     );
     setRooms(value);
+  };
+
+  const handleSelectTags = (e) => {
+    const value = Array.from(
+      e.target.selectedOptions,
+      (option: any) => option.value,
+    );
+    setTags(value);
   };
 
   const handleSend = async (e) => {
@@ -53,6 +63,7 @@ const NewHotel = () => {
       const newHotel = {
         ...hotelInfo,
         rooms,
+        tags,
         photos: list,
       };
 
@@ -128,6 +139,16 @@ const NewHotel = () => {
                           {room.title}
                         </option>
                       ))}
+                </select>
+              </div>
+              <div className={styles['formInput']}>
+                <label>Tags</label>
+                <select id="tagId" onChange={handleSelectTags} multiple>
+                  {tagsArr.map((tag, index) => (
+                    <option value={tag} key={index}>
+                      {tag}
+                    </option>
+                  ))}
                 </select>
               </div>
               <button onClick={handleSend}>Send</button>
