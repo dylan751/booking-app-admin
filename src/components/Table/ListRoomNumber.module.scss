@@ -1,0 +1,18 @@
+.table {
+  .cellWrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .tableCellDiv {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    .tableCellSpan {
+      padding: 6px;
+      border-radius: 4px;
+      background: #ff0000bd;
+      color: #fff;
+    }
+  }
+}

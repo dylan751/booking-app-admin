@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Table.module.scss';
+import styles from './ListHotelRoom.module.scss';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -9,7 +9,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import useFetch from '../../hooks/useFetch';
 
-const ListRoom = () => {
+const ListHotelRoom = () => {
   const id = location.pathname.split('/')[2];
   const { data } = useFetch<any>(
     `${process.env.REACT_APP_API_ENDPOINT}/hotels/room/${id}`,
@@ -77,4 +77,4 @@ const ListRoom = () => {
   );
 };
 
-export default ListRoom;
+export default ListHotelRoom;

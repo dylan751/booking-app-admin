@@ -5,7 +5,7 @@ import Navbar from '../../components/Navbar/Navbar';
 import Widget from '../../components/Widget/Widget';
 import Featured from '../../components/Featured/Featured';
 import Chart from '../../components/Chart/Chart';
-import Table from '../../components/Table/Table';
+import Table from '../../components/Table/ListHotelRoom';
 
 const Home = () => {
   return (

@@ -1,16 +1,20 @@
 import React from 'react';
-import styles from './SingleHotel.module.scss';
+import styles from './SingleRoom.module.scss';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Navbar from '../../components/Navbar/Navbar';
 import Chart from '../../components/Chart/Chart';
-import ListHotelRoom from '../../components/Table/ListHotelRoom';
 import useFetch from '../../hooks/useFetch';
+import ListRoomNumber from '../../components/Table/ListRoomNumber';
 
 const SingleHotel = () => {
   const id = location.pathname.split('/')[2];
-  const { data } = useFetch<any>(
-    `${process.env.REACT_APP_API_ENDPOINT}/hotels/${id}`,
+  const { data, loading } = useFetch<any>(
+    `${process.env.REACT_APP_API_ENDPOINT}/rooms/${id}`,
   );
+
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
 
   return (
     <div className={styles['single']}>
@@ -22,33 +26,25 @@ const SingleHotel = () => {
             <div className={styles['editButton']}>Edit</div>
             <h1 className={styles['title']}>Information</h1>
             <div className={styles['item']}>
-              <img
-                src={
-                  data.photos
-                    ? data.photos[0]
-                    : 'http://res.cloudinary.com/di7a7sbbn/image/upload/v1668413532/upload/uihypk8l9hvx3a82da0m.jpg'
-                }
+              {/* <img
+                src={data.photos ? data.photos[0] : ''}
                 alt=""
                 className={styles['itemImg']}
-              />
+              /> */}
               <div className={styles['details']}>
-                <h1 className={styles['itemTitle']}>{data.name}</h1>
+                <h1 className={styles['itemTitle']}>{data.title}</h1>
                 <div className={styles['detailItem']}>
-                  <span className={styles['itemKey']}>City:</span>
-                  <span className={styles['itemValue']}>{data.city}</span>
+                  <span className={styles['itemKey']}>Price:</span>
+                  <span className={styles['itemValue']}>{data.price}</span>
                 </div>
                 <div className={styles['detailItem']}>
-                  <span className={styles['itemKey']}>Title:</span>
-                  <span className={styles['itemValue']}>{data.title}</span>
+                  <span className={styles['itemKey']}>Max people:</span>
+                  <span className={styles['itemValue']}>{data.maxPeople}</span>
                 </div>
                 <div className={styles['detailItem']}>
-                  <span className={styles['itemKey']}>Address:</span>
-                  <span className={styles['itemValue']}>{data.address}</span>
-                </div>
-                <div className={styles['detailItem']}>
-                  <span className={styles['itemKey']}>Cheapest price:</span>
+                  <span className={styles['itemKey']}>Description:</span>
                   <span className={styles['itemValue']}>
-                    ${data.cheapestPrice}
+                    {data.description}
                   </span>
                 </div>
               </div>
@@ -59,8 +55,8 @@ const SingleHotel = () => {
           </div>
         </div>
         <div className={styles['bottom']}>
-          <h1 className={styles['title']}>Hotel rooms</h1>
-          <ListHotelRoom />
+          <h1 className={styles['title']}>Rooms</h1>
+          <ListRoomNumber roomNumbers={data.roomNumbers} />
         </div>
       </div>
     </div>
