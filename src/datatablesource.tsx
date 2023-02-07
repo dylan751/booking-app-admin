@@ -44,11 +44,26 @@ export const userColumns = [
 ];
 
 export const hotelColumns = [
-  { field: '_id', headerName: 'ID', width: 250 },
+  {
+    field: '_id',
+    headerName: 'ID',
+    width: 100,
+    renderCell: (params) => {
+      return (
+        <div className={styles['cellWithImg']}>
+          <img
+            className={styles['cellImg']}
+            src={params.row.photos[0] || 'https://i.ibb.co/MBtjqXQ/no-avatar.gif'}
+            alt="avatar"
+          />
+        </div>
+      );
+    },
+  },
   {
     field: 'name',
     headerName: 'Name',
-    width: 150,
+    width: 250,
   },
   {
     field: 'type',

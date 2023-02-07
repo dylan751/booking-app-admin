@@ -7,58 +7,29 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import useFetch from '../../hooks/useFetch';
 
-const List = () => {
-  const rows = [
+const ListRoom = () => {
+  const id = location.pathname.split('/')[2];
+  const { data } = useFetch<any>(
+    `${process.env.REACT_APP_API_ENDPOINT}/hotels/room/${id}`,
+  );
+  console.log(data);
+  const roomPhotos = [
     {
-      id: 1143155,
-      product: 'Acer Nitro 5',
-      img: 'https://m.media-amazon.com/images/I/81bc8mA3nKL._AC_UY327_FMwebp_QL65_.jpg',
-      customer: 'John Smith',
-      date: '1 March',
-      amount: 785,
-      method: 'Cash on Delivery',
-      status: 'Approved',
+      img: 'http://res.cloudinary.com/di7a7sbbn/image/upload/v1668413532/upload/uihypk8l9hvx3a82da0m.jpg',
     },
     {
-      id: 2235235,
-      product: 'Playstation 5',
-      img: 'https://m.media-amazon.com/images/I/31JaiPXYI8L._AC_UY327_FMwebp_QL65_.jpg',
-      customer: 'Michael Doe',
-      date: '1 March',
-      amount: 900,
-      method: 'Online Payment',
-      status: 'Pending',
+      img: 'http://res.cloudinary.com/di7a7sbbn/image/upload/v1668413805/upload/wn7vd9nf4dprm4h8fecf.jpg',
     },
     {
-      id: 2342353,
-      product: 'Redragon S101',
-      img: 'https://m.media-amazon.com/images/I/71kr3WAj1FL._AC_UY327_FMwebp_QL65_.jpg',
-      customer: 'John Smith',
-      date: '1 March',
-      amount: 35,
-      method: 'Cash on Delivery',
-      status: 'Pending',
+      img: 'http://res.cloudinary.com/di7a7sbbn/image/upload/v1668414040/upload/jmolhxwkeev9typf8d5q.jpg',
     },
     {
-      id: 2357741,
-      product: 'Razer Blade 15',
-      img: 'https://m.media-amazon.com/images/I/71wF7YDIQkL._AC_UY327_FMwebp_QL65_.jpg',
-      customer: 'Jane Smith',
-      date: '1 March',
-      amount: 920,
-      method: 'Online',
-      status: 'Approved',
+      img: 'http://res.cloudinary.com/di7a7sbbn/image/upload/v1668414219/upload/e3yqmajckk6sfdhpk301.jpg',
     },
     {
-      id: 2342355,
-      product: 'ASUS ROG Strix',
-      img: 'https://m.media-amazon.com/images/I/81hH5vK-MCL._AC_UY327_FMwebp_QL65_.jpg',
-      customer: 'Harold Carol',
-      date: '1 March',
-      amount: 2000,
-      method: 'Online',
-      status: 'Pending',
+      img: 'http://res.cloudinary.com/di7a7sbbn/image/upload/v1668785785/upload/sgg9j5xxioecrfgnj8rt.jpg',
     },
   ];
   return (
@@ -66,41 +37,37 @@ const List = () => {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell className={styles['tableCell']}>Tracking ID</TableCell>
-            <TableCell className={styles['tableCell']}>Product</TableCell>
-            <TableCell className={styles['tableCell']}>Customer</TableCell>
-            <TableCell className={styles['tableCell']}>Date</TableCell>
-            <TableCell className={styles['tableCell']}>Amount</TableCell>
-            <TableCell className={styles['tableCell']}>
-              Payment Method
-            </TableCell>
-            <TableCell className={styles['tableCell']}>Status</TableCell>
+            <TableCell className={styles['tableCell']}>Room ID</TableCell>
+            <TableCell className={styles['tableCell']}>Title</TableCell>
+            <TableCell className={styles['tableCell']}>Description</TableCell>
+            <TableCell className={styles['tableCell']}>Price</TableCell>
+            <TableCell className={styles['tableCell']}>Max people</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell className={styles['tableCell']}>{row.id}</TableCell>
+          {data.map((room, index) => (
+            <TableRow key={room._id}>
               <TableCell className={styles['tableCell']}>
                 <div className={styles['cellWrapper']}>
-                  <img src={row.img} alt="" className={styles['image']} />
-                  {row.product}
+                  <img
+                    src={roomPhotos[index].img}
+                    alt=""
+                    className={styles['image']}
+                  />
+                  {room._id}
                 </div>
               </TableCell>
               <TableCell className={styles['tableCell']}>
-                {row.customer}
-              </TableCell>
-              <TableCell className={styles['tableCell']}>{row.date}</TableCell>
-              <TableCell className={styles['tableCell']}>
-                {row.amount}
+                {room.title}
               </TableCell>
               <TableCell className={styles['tableCell']}>
-                {row.method}
+                {room.description}
               </TableCell>
               <TableCell className={styles['tableCell']}>
-                <span className={`${styles['status']} ${styles[row.status]}`}>
-                  {row.status}
-                </span>
+                {room.price}
+              </TableCell>
+              <TableCell className={styles['tableCell']}>
+                {room.maxPeople}
               </TableCell>
             </TableRow>
           ))}
@@ -110,4 +77,4 @@ const List = () => {
   );
 };
 
-export default List;
+export default ListRoom;

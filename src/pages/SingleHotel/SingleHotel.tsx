@@ -1,11 +1,17 @@
 import React from 'react';
-import styles from './Single.module.scss';
+import styles from './SingleHotel.module.scss';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Navbar from '../../components/Navbar/Navbar';
 import Chart from '../../components/Chart/Chart';
-import List from '../../components/Table/Table';
+import ListRoom from '../../components/Table/Table';
+import useFetch from '../../hooks/useFetch';
 
-const Single = () => {
+const SingleHotel = () => {
+  const id = location.pathname.split('/')[2];
+  const { data } = useFetch<any>(
+    `${process.env.REACT_APP_API_ENDPOINT}/hotels/${id}`,
+  );
+
   return (
     <div className={styles['single']}>
       <Sidebar />
@@ -17,29 +23,27 @@ const Single = () => {
             <h1 className={styles['title']}>Information</h1>
             <div className={styles['item']}>
               <img
-                src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+                src={data.photos ? data.photos[0] : ''}
                 alt=""
                 className={styles['itemImg']}
               />
               <div className={styles['details']}>
-                <h1 className={styles['itemTitle']}>Jane Doe</h1>
+                <h1 className={styles['itemTitle']}>{data.name}</h1>
                 <div className={styles['detailItem']}>
-                  <span className={styles['itemKey']}>Email:</span>
-                  <span className={styles['itemValue']}>janedoe@gmail.com</span>
+                  <span className={styles['itemKey']}>City:</span>
+                  <span className={styles['itemValue']}>{data.city}</span>
                 </div>
                 <div className={styles['detailItem']}>
-                  <span className={styles['itemKey']}>Phone:</span>
-                  <span className={styles['itemValue']}>+1 2345 67 89</span>
+                  <span className={styles['itemKey']}>Title:</span>
+                  <span className={styles['itemValue']}>{data.title}</span>
                 </div>
                 <div className={styles['detailItem']}>
                   <span className={styles['itemKey']}>Address:</span>
-                  <span className={styles['itemValue']}>
-                    Elton St. 234 Garden Yd. NewYork
-                  </span>
+                  <span className={styles['itemValue']}>{data.address}</span>
                 </div>
                 <div className={styles['detailItem']}>
-                  <span className={styles['itemKey']}>Country:</span>
-                  <span className={styles['itemValue']}>USA</span>
+                  <span className={styles['itemKey']}>Cheapest price:</span>
+                  <span className={styles['itemValue']}>${data.cheapestPrice}</span>
                 </div>
               </div>
             </div>
@@ -49,12 +53,12 @@ const Single = () => {
           </div>
         </div>
         <div className={styles['bottom']}>
-          <h1 className={styles['title']}>Last Transactions</h1>
-          <List />
+          <h1 className={styles['title']}>Hotel rooms</h1>
+          <ListRoom />
         </div>
       </div>
     </div>
   );
 };
 
-export default Single;
+export default SingleHotel;

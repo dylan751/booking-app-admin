@@ -45,7 +45,10 @@ const Datatable = ({ columns }: DatatableProps) => {
       renderCell: (params) => {
         return (
           <div className={styles['cellAction']}>
-            <Link to={`/${path}/test`} style={{ textDecoration: 'none' }}>
+            <Link
+              to={`/${path}/${params.id}`}
+              style={{ textDecoration: 'none' }}
+            >
               <div className="viewButton">View</div>
             </Link>
             <div

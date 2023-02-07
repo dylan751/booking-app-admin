@@ -2,7 +2,6 @@ import React from 'react';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import List from './pages/List/List';
-import Single from './pages/Single/Single';
 import NewUser from './pages/NewUser/NewUser';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { userInputs } from './formSource';
@@ -18,6 +17,7 @@ import {
 } from './datatablesource';
 import NewHotel from './pages/NewHotel/NewHotel';
 import NewRoom from './pages/NewRoom/NewRoom';
+import SingleHotel from './pages/SingleHotel/SingleHotel';
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -59,14 +59,14 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-              <Route
+              {/* <Route
                 path=":userId"
                 element={
                   <ProtectedRoute>
-                    <Single />
+                    <SingleHotel />
                   </ProtectedRoute>
                 }
-              />
+              /> */}
               <Route
                 path="new"
                 element={
@@ -89,7 +89,7 @@ function App() {
                 path=":hotelId"
                 element={
                   <ProtectedRoute>
-                    <Single />
+                    <SingleHotel />
                   </ProtectedRoute>
                 }
               />
@@ -111,14 +111,14 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-              <Route
+              {/* <Route
                 path=":roomId"
                 element={
                   <ProtectedRoute>
-                    <Single />
+                    <SingleHotel />
                   </ProtectedRoute>
                 }
-              />
+              /> */}
               <Route
                 path="new"
                 element={
@@ -137,14 +137,14 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-              <Route
+              {/* <Route
                 path=":formId"
                 element={
                   <ProtectedRoute>
-                    <Single />
+                    <SingleHotel />
                   </ProtectedRoute>
                 }
-              />
+              /> */}
             </Route>
           </Route>
         </Routes>
