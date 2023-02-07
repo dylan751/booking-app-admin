@@ -19,6 +19,7 @@ import NewHotel from './pages/NewHotel/NewHotel';
 import NewRoom from './pages/NewRoom/NewRoom';
 import SingleHotel from './pages/SingleHotel/SingleHotel';
 import SingleRoom from './pages/SingleRoom/SingleRoom';
+import SingleUser from './pages/SingleUser/SingleUser';
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -60,14 +61,14 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-              {/* <Route
+              <Route
                 path=":userId"
                 element={
                   <ProtectedRoute>
-                    <SingleHotel />
+                    <SingleUser />
                   </ProtectedRoute>
                 }
-              /> */}
+              />
               <Route
                 path="new"
                 element={
