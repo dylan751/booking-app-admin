@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './ListHotelRoom.module.scss';
+import styles from './ListUserBooking.module.scss';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -8,20 +8,25 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import useFetch from '../../hooks/useFetch';
+import { Hotel } from '../../models/Hotel';
+import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
 
-const ListHotelRoom = () => {
-  const hotelId = location.pathname.split('/')[2];
-  const { data } = useFetch<any>(
-    `${process.env.REACT_APP_API_ENDPOINT}/hotels/room/${hotelId}`,
+interface ListUserBookingProps {
+  data: any;
+}
+
+const ListUserBooking = ({ data }: ListUserBookingProps) => {
+  const { data: hotelData } = useFetch<Hotel>(
+    `${process.env.REACT_APP_API_ENDPOINT}/hotels/${data?.hotelId}`,
   );
 
+  console.log('Hotel data', hotelData);
   const navigate = useNavigate();
   const handleNavigate = (id) => {
-    navigate(`/rooms/${id}`);
+    navigate(`/hotels/${id}`);
   };
-
-  const roomPhotos = [
+  const hotelPhotos = [
     {
       img: 'http://res.cloudinary.com/di7a7sbbn/image/upload/v1668413532/upload/uihypk8l9hvx3a82da0m.jpg',
     },
@@ -43,41 +48,43 @@ const ListHotelRoom = () => {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell className={styles['tableCell']}>Room ID</TableCell>
-            <TableCell className={styles['tableCell']}>Title</TableCell>
-            <TableCell className={styles['tableCell']}>Description</TableCell>
+            <TableCell className={styles['tableCell']}>Hotel ID</TableCell>
+            <TableCell className={styles['tableCell']}>Start date</TableCell>
+            <TableCell className={styles['tableCell']}>End date</TableCell>
             <TableCell className={styles['tableCell']}>Price</TableCell>
-            <TableCell className={styles['tableCell']}>Max people</TableCell>
+            <TableCell className={styles['tableCell']}>
+              Special Request
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((room, index) => (
-            <TableRow key={room._id}>
+          {data.map((form, index) => (
+            <TableRow key={form._id}>
               <TableCell className={styles['tableCell']}>
                 <div
                   className={styles['cellWrapper']}
-                  onClick={() => handleNavigate(room._id)}
+                  onClick={() => handleNavigate(form.hotelId)}
                   style={{ cursor: 'pointer' }}
                 >
                   <img
-                    src={roomPhotos[index].img}
+                    src={hotelPhotos[index % 5].img}
                     alt=""
                     className={styles['image']}
                   />
-                  {room._id}
+                  {form.hotelId}
                 </div>
               </TableCell>
               <TableCell className={styles['tableCell']}>
-                {room.title}
+                {`${format(new Date(form.startDate), 'EE, d MMM')}`}
               </TableCell>
               <TableCell className={styles['tableCell']}>
-                {room.description}
+                {`${format(new Date(form.endDate), 'EE, d MMM')}`}
               </TableCell>
               <TableCell className={styles['tableCell']}>
-                {room.price}
+                ${form.price}
               </TableCell>
               <TableCell className={styles['tableCell']}>
-                {room.maxPeople}
+                {form.specialRequest}
               </TableCell>
             </TableRow>
           ))}
@@ -87,4 +94,4 @@ const ListHotelRoom = () => {
   );
 };
 
-export default ListHotelRoom;
+export default ListUserBooking;

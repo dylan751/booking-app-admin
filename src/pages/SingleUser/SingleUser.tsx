@@ -3,15 +3,19 @@ import styles from './SingleUser.module.scss';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Navbar from '../../components/Navbar/Navbar';
 import Chart from '../../components/Chart/Chart';
-import ListHotelRoom from '../../components/Table/ListHotelRoom';
 import useFetch from '../../hooks/useFetch';
+import ListUserBooking from '../../components/Table/ListUserBooking';
 
 const SingleUser = () => {
   const id = location.pathname.split('/')[2];
   const { data } = useFetch<any>(
     `${process.env.REACT_APP_API_ENDPOINT}/users/${id}`,
   );
-  console.log(data);
+  const userId = location.pathname.split('/')[2];
+  const { data: reservationData } = useFetch<any>(
+    `${process.env.REACT_APP_API_ENDPOINT}/users/${userId}/reservation`,
+  );
+  console.log(reservationData);
 
   return (
     <div className={styles['single']}>
@@ -61,8 +65,10 @@ const SingleUser = () => {
           </div>
         </div>
         <div className={styles['bottom']}>
-          <h1 className={styles['title']}>{`${data.username}'s booking`}</h1>
-          <ListHotelRoom />
+          <h1
+            className={styles['title']}
+          >{`${data.username}'s reservations`}</h1>
+          <ListUserBooking data={reservationData} />
         </div>
       </div>
     </div>

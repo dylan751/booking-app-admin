@@ -22,8 +22,6 @@ const Datatable = ({ columns }: DatatableProps) => {
     `${process.env.REACT_APP_API_ENDPOINT}/${path}`,
   );
 
-  console.log(data);
-
   useEffect(() => {
     if (data) setList(data);
   }, [data]);
