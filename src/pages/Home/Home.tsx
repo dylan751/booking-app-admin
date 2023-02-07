@@ -15,9 +15,9 @@ const Home = () => {
         <Navbar />
         <div className={styles['widgets']}>
           <Widget type="user" />
-          <Widget type="order" />
-          <Widget type="earning" />
-          <Widget type="balance" />
+          <Widget type="hotel" />
+          <Widget type="room" />
+          <Widget type="form" />
         </div>
         <div className={styles['charts']}>
           <Featured />
