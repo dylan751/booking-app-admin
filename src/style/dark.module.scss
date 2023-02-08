@@ -6,9 +6,14 @@
     stroke: rgba(228, 228, 228, 0.219);
   }
 
-  .table {
+  table {
     background-color: #111;
+    div {
+      color: gray;
+    }
+  }
 
+  .table {
     .tableCell {
       color: gray;
     }
@@ -65,5 +70,8 @@
 
   input {
     background-color: transparent;
+  }
+  div {
+    color: darkgray;
   }
 }

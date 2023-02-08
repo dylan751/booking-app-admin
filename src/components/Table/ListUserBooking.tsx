@@ -48,12 +48,20 @@ const ListUserBooking = ({ data }: ListUserBookingProps) => {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell className={styles['tableCell']}>Hotel ID</TableCell>
-            <TableCell className={styles['tableCell']}>Start date</TableCell>
-            <TableCell className={styles['tableCell']}>End date</TableCell>
-            <TableCell className={styles['tableCell']}>Price</TableCell>
             <TableCell className={styles['tableCell']}>
-              Special Request
+              <div>Hotel ID</div>
+            </TableCell>
+            <TableCell className={styles['tableCell']}>
+              <div>Start date</div>
+            </TableCell>
+            <TableCell className={styles['tableCell']}>
+              <div>End date</div>
+            </TableCell>
+            <TableCell className={styles['tableCell']}>
+              <div>Pric</div>e
+            </TableCell>
+            <TableCell className={styles['tableCell']}>
+              <div> Special Request</div>
             </TableCell>
           </TableRow>
         </TableHead>
@@ -75,16 +83,16 @@ const ListUserBooking = ({ data }: ListUserBookingProps) => {
                 </div>
               </TableCell>
               <TableCell className={styles['tableCell']}>
-                {`${format(new Date(form.startDate), 'EE, d MMM')}`}
+                <div> {`${format(new Date(form.startDate), 'EE, d MMM')}`}</div>
               </TableCell>
               <TableCell className={styles['tableCell']}>
-                {`${format(new Date(form.endDate), 'EE, d MMM')}`}
+                <div> {`${format(new Date(form.endDate), 'EE, d MMM')}`}</div>
               </TableCell>
               <TableCell className={styles['tableCell']}>
-                ${form.price}
+                <div> ${form.price}</div>
               </TableCell>
               <TableCell className={styles['tableCell']}>
-                {form.specialRequest}
+                <div> {form.specialRequest}</div>
               </TableCell>
             </TableRow>
           ))}

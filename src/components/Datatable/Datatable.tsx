@@ -47,7 +47,7 @@ const Datatable = ({ columns }: DatatableProps) => {
               to={`/${path}/${params.id}`}
               style={{ textDecoration: 'none' }}
             >
-              <div className="viewButton">View</div>
+              <div className={styles['viewButton']}>View</div>
             </Link>
             <div
               className={styles['deleteButton']}

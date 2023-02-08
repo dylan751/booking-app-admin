@@ -19,9 +19,11 @@ const ListRoomNumber = ({ roomNumbers }: ListRoomNumberProps) => {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell className={styles['tableCell']}>Room number</TableCell>
             <TableCell className={styles['tableCell']}>
-              Unavailable dates
+              <div>Room number</div>
+            </TableCell>
+            <TableCell className={styles['tableCell']}>
+              <div> Unavailable dates</div>
             </TableCell>
           </TableRow>
         </TableHead>
@@ -34,10 +36,9 @@ const ListRoomNumber = ({ roomNumbers }: ListRoomNumberProps) => {
               <TableCell className={styles['tableCell']}>
                 <div className={styles['tableCellDiv']}>
                   {room.unavailableDates.map((date, index) => (
-                    <span
-                      className={styles['tableCellSpan']}
-                      key={index}
-                    >{`${format(new Date(date), 'EEEE, d MMMM')}`}</span>
+                    <span className={styles['tableCellSpan']} key={index}>
+                      <div>{`${format(new Date(date), 'EEEE, d MMMM')}`}</div>
+                    </span>
                   ))}
                 </div>
               </TableCell>

@@ -9,6 +9,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import useFetch from '../../hooks/useFetch';
 import { useNavigate } from 'react-router-dom';
+import '../../style/dark.module.scss';
 
 const ListHotelRoom = () => {
   const hotelId = location.pathname.split('/')[2];
@@ -43,11 +44,21 @@ const ListHotelRoom = () => {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell className={styles['tableCell']}>Room ID</TableCell>
-            <TableCell className={styles['tableCell']}>Title</TableCell>
-            <TableCell className={styles['tableCell']}>Description</TableCell>
-            <TableCell className={styles['tableCell']}>Price</TableCell>
-            <TableCell className={styles['tableCell']}>Max people</TableCell>
+            <TableCell className={styles['tableCell']}>
+              <div>Room ID</div>
+            </TableCell>
+            <TableCell className={styles['tableCell']}>
+              <div>Title</div>
+            </TableCell>
+            <TableCell className={styles['tableCell']}>
+              <div>Description</div>
+            </TableCell>
+            <TableCell className={styles['tableCell']}>
+              <div>Price</div>
+            </TableCell>
+            <TableCell className={styles['tableCell']}>
+              <div>Max people</div>
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -68,16 +79,16 @@ const ListHotelRoom = () => {
                 </div>
               </TableCell>
               <TableCell className={styles['tableCell']}>
-                {room.title}
+                <div>{room.title}</div>
               </TableCell>
               <TableCell className={styles['tableCell']}>
-                {room.description}
+                <div>{room.description}</div>
               </TableCell>
               <TableCell className={styles['tableCell']}>
-                {room.price}
+                <div>{room.price}</div>
               </TableCell>
               <TableCell className={styles['tableCell']}>
-                {room.maxPeople}
+                <div>{room.maxPeople}</div>
               </TableCell>
             </TableRow>
           ))}
