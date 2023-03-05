@@ -4,6 +4,7 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import StoreIcon from '@mui/icons-material/Store';
 import { Link } from 'react-router-dom';
 import { DarkModeContext } from '../../context/DarkModeContext';
@@ -53,6 +54,10 @@ const Sidebar = () => {
               <span>Booking Forms</span>
             </li>
           </Link>
+          <li>
+            <ExitToAppIcon className={styles['icon']} />
+            <span>Logout</span>
+          </li>
         </ul>
       </div>
       <div className={styles['bottom']}>

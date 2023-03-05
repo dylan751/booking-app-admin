@@ -6,7 +6,7 @@ import styles from './Login.module.scss';
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
-    username: '',
+    email: '',
     password: '',
   });
 
@@ -49,8 +49,8 @@ const Login = () => {
       <div className={styles['login__container']}>
         <input
           type="text"
-          placeholder="Username"
-          id="username"
+          placeholder="Email"
+          id="email"
           onChange={handleInputChange}
           className={styles['login__container__input']}
         />
