@@ -8,7 +8,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/muoi07052001/booking-app-admin">
+  <a href="https://github.com/dylan751/booking-app-admin">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -17,14 +17,14 @@
   <p align="center">
     The Admin Dashboard part of the Booking app (Clone from <b>https://booking.com</b> project)
     <br />
-    <a href="https://github.com/muoi07052001/booking-app-admin"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/dylan751/booking-app-admin"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/muoi07052001/booking-app-admin">View Repo</a>
+    <a href="https://github.com/dylan751/booking-app-admin">View Repo</a>
     ·
-    <a href="https://github.com/muoi07052001/booking-app-admin/issues">Report Bug</a>
+    <a href="https://github.com/dylan751/booking-app-admin/issues">Report Bug</a>
     ·
-    <a href="https://github.com/muoi07052001/booking-app-admin/issues">Request Feature</a>
+    <a href="https://github.com/dylan751/booking-app-admin/issues">Request Feature</a>
   </p>
 </div>
 
@@ -96,7 +96,7 @@ Things you need to use the software and how to install them.
 2. Get a [Cloudinary](https://cloudinary.com/) API Key
 3. Clone the repo
    ```sh
-   git clone https://github.com/muoi07052001/booking-app-admin.git
+   git clone https://github.com/dylan751/booking-app-admin.git
    ```
 4. Install packages and dependencies (yarn)
    ```sh
@@ -156,7 +156,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 - [ ] Writting Blog Feature
 - [ ] Comment Feature
 
-See the [open issues](https://github.com/muoi07052001/booking-app-admin/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/dylan751/booking-app-admin/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">Back to top</a>)</p>
 
@@ -183,7 +183,7 @@ Don't forget to give the project a star! Thanks again!
 
 Nguyen Hai Duong - [@facebook_handle](https://www.facebook.com/duong.nguyenhai.7140/) - muoi07052001@gmail.com
 
-Project Link: [https://github.com/muoi07052001/booking-app-admin](https://github.com/muoi07052001/booking-app-admin)
+Project Link: [https://github.com/dylan751/booking-app-admin](https://github.com/dylan751/booking-app-admin)
 
 <p align="right">(<a href="#readme-top">Back to top</a>)</p>
 
@@ -201,15 +201,15 @@ Project Link: [https://github.com/muoi07052001/booking-app-admin](https://github
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
 [contributors-shield]: https://img.shields.io/github/contributors/muoi07052001/booking-app-admin.svg?style=for-the-badge
-[contributors-url]: https://github.com/muoi07052001/booking-app-admin/graphs/contributors
+[contributors-url]: https://github.com/dylan751/booking-app-admin/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/muoi07052001/booking-app-admin.svg?style=for-the-badge
-[forks-url]: https://github.com/muoi07052001/booking-app-admin/network/members
+[forks-url]: https://github.com/dylan751/booking-app-admin/network/members
 [stars-shield]: https://img.shields.io/github/stars/muoi07052001/booking-app-admin.svg?style=for-the-badge
-[stars-url]: https://github.com/muoi07052001/booking-app-admin/stargazers
+[stars-url]: https://github.com/dylan751/booking-app-admin/stargazers
 [issues-shield]: https://img.shields.io/github/issues/muoi07052001/booking-app-admin.svg?style=for-the-badge
-[issues-url]: https://github.com/muoi07052001/booking-app-admin/issues
+[issues-url]: https://github.com/dylan751/booking-app-admin/issues
 [license-shield]: https://img.shields.io/github/license/muoi07052001/booking-app-admin.svg?style=for-the-badge
-[license-url]: https://github.com/muoi07052001/booking-app-admin/blob/master/LICENSE.txt
+[license-url]: https://github.com/dylan751/booking-app-admin/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/nguyen-duong-072879247/
 [product-screenshot]: images/product-screenshot.png
